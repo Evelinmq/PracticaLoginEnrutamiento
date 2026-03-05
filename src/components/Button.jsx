@@ -1,4 +1,3 @@
-import './styles.css';
 
 function Button({ type, action, text }) {
   const className = type === "primary" ? "btn btn-primary" : "btn btn-secondary";

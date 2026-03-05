@@ -1,4 +1,4 @@
-import './styles.css';
+
 
 function Table({ data }) {
   return (
@@ -11,14 +11,16 @@ function Table({ data }) {
         </tr>
       </thead>
       <tbody>
-        {data.map((persona, index) => (
+        {data.map((item, index) => (
           <tr key={index}>
-            <td>{persona.user}</td>
-            <td>{persona.name}</td>
-            <td>{persona.role}</td>
+            <td>{item.user}</td>
+            <td>{item.name}</td>
+            <td>{item.rol}</td> 
           </tr>
         ))}
       </tbody>
     </table>
   );
 }
+
+export default Table;

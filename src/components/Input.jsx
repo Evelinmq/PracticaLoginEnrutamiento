@@ -1,4 +1,3 @@
-import './styles.css';
 
 function Input({ label, type, value, onChange, placeholder }) {
   return (
