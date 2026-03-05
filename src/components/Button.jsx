@@ -11,3 +11,5 @@ function Button({ type, action, text }) {
     </button>
   );
 }
+
+export default Button;

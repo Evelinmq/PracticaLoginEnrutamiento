@@ -13,3 +13,5 @@ function Input({ label, type, value, onChange, placeholder }) {
     </div>
   );
 }
+
+export default Input;

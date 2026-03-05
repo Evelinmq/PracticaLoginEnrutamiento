@@ -1,4 +1,3 @@
-import './Styles.css'
 import { AuthProvider } from './AuthContext';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -10,7 +9,6 @@ import Dashboard from './routes/Dashboard';
 
 function App() {
   return (
-    <AuthProvider>
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />
@@ -24,7 +22,6 @@ function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
-    </AuthProvider>
   );
 }
 
