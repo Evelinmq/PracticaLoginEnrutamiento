@@ -1,25 +1,25 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
 
 function Login ({ onLogin }) {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const { login } = useContext(AuthContext);
+
     const handleLogin = () => {
-    const success = onLogin(username, password);
-    
-    if (success) {
-        navigate('/dashboard');
-    } else {
-        alert('Credenciales incorrectas');
-    }
-};
+        
+        const success = login(username, password);
 
-  
-    
-
+        if (success) {
+            navigate('/dashboard');
+        } else {
+            alert('Credenciales incorrectas');
+        }
+    };
     return (
         <div>
             <h1>Login</h1>
@@ -42,7 +42,7 @@ function Login ({ onLogin }) {
             />
         </div>
     );
-};
 
+}
 
 export default Login;
