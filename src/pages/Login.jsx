@@ -1,50 +1,55 @@
 import { useState, useContext } from "react";
-import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
+import Button from "../components/Button";
+import Input from "../components/Input";
 
-function Login ({ onLogin }) {
-    const navigate = useNavigate();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+function Login() {
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
-   const { login } = useContext(AuthContext);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-    const handleLoginAction = (e) => {
-        if (e) e.preventDefault(); 
+  const handleLoginAction = () => {
+    const success = login(username, password);
 
-       
-        const success = login(username, password);
+    if (success) {
+      navigate('/dashboard');
+    } else {
+      alert('Usuario o contraseña incorrectos');
+    }
+  };
 
-        if (success) {
-            navigate('/dashboard');
-        } else {
-            alert('Usuario o contraseña incorrectos');
-        }
-    };
-    return (
-        <div>
-            <h1>Login</h1>
-            <div>
-                <input type="text" placeholder="Username" 
-                onChange={
-                    (event) => setUsername(event.target.value)
-                }
-                />
-            </div>
-            <div>
-                <input type="password" placeholder="Password"
-                onChange={
-                    (event) => setPassword(event.target.value)
-                }
-                />
-            </div>
-            <Button text="Iniciar sesión"
-            action={handleLoginAction}
-            />
-        </div>
-    );
+  return (
+    <div className="login-container">
+      <div className="login-card">
+        <h1>Login</h1>
 
+        <Input
+          label="Username"
+          type="text"
+          placeholder="Ingresa tu usuario"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <Input
+          label="Password"
+          type="password"
+          placeholder="Ingresa tu contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <Button
+          type="primary"
+          text="Iniciar sesión"
+          action={handleLoginAction}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default Login;
