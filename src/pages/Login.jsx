@@ -8,16 +8,18 @@ function Login ({ onLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const { login } = useContext(AuthContext);
+   const { login } = useContext(AuthContext);
 
-    const handleLogin = () => {
-        
+    const handleLoginAction = (e) => {
+        if (e) e.preventDefault(); 
+
+       
         const success = login(username, password);
 
         if (success) {
             navigate('/dashboard');
         } else {
-            alert('Credenciales incorrectas');
+            alert('Usuario o contraseña incorrectos');
         }
     };
     return (
@@ -38,7 +40,7 @@ function Login ({ onLogin }) {
                 />
             </div>
             <Button text="Iniciar sesión"
-            action={handleLogin}
+            action={handleLoginAction}
             />
         </div>
     );

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { AuthProvider } from './AuthContext';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
@@ -17,7 +18,7 @@ function App() {
 
 
   return (
-    <>
+    <AuthProvider>
     <Routes>
       <Route element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />
@@ -36,7 +37,7 @@ function App() {
 
     </Routes>
 
-    </>
+    </AuthProvider>
   );
 }
 

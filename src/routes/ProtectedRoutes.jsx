@@ -11,7 +11,7 @@ function ProtectedRoutes({ allowedRoles }){
         return <Navigate to="/login" replace />;
     }
 
-    if (allowedRoles && !allowedRoles.includes(user.role)) {
+    if (allowedRoles && !allowedRoles.includes(user.rol)) {
         return <Navigate to="/dashboard" replace />;
     }
 
