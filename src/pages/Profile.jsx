@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react' ;
+import { AuthContext } from '../AuthContext'; 
 
-const Profile = ({ user }) => {
+const Profile = () => { 
+  
+
+  const { user } = useContext(AuthContext);
+
   if (!user) {
     return <h2>No hay usuario logueado</h2>;
   }
@@ -9,6 +14,8 @@ const Profile = ({ user }) => {
     <div>
       <h1>Perfil</h1>
       <h2>Bienvenido {user.name}</h2>
+      <p>Usuario: {user.user}</p>
+      <p>Rol: {user.rol}</p>
     </div>
   )
 }
