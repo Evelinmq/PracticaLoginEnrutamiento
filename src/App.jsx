@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import PublicRoute from './routes/PublicRoute';
@@ -9,6 +9,12 @@ import Dashboard from './routes/Dashboard';
 import AdminPanel from './routes/AdminPanel';
 
 function App() {
+
+  const handleLogin = (username, password) => {
+    console.log("Login con:", username, password);
+    return true; 
+  };
+
 
   return (
     <>
@@ -25,6 +31,9 @@ function App() {
       <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>
         <Route path="/admin" element={<AdminPanel />} />
       </Route>
+      
+   <Route path="*" element={<Navigate to="/login" replace />} />
+
     </Routes>
 
     </>
