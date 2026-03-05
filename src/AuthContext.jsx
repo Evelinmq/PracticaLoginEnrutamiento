@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
     },
     {
       user: "KevinD",
-      name: "Kevin Daniel Saldoval rueda",
+      name: "Kevin Daniel Sandoval Rueda",
       rol: "Admin",
       password: "kevind93?#"
     },
