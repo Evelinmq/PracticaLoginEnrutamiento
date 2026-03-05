@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
       user: "KevinD",
       name: "Kevin Daniel Sandoval Rueda",
       rol: "Admin",
-      password: "kevind93?#"
+      password: "123"
     },
     {
       user: "dRecillas",
@@ -37,7 +37,10 @@ export function AuthProvider({ children }) {
     }
   ];
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+  const savedUser = localStorage.getItem("user");
+  return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   const login = (username, password) => {
     const foundUser = users.find(
@@ -45,16 +48,18 @@ export function AuthProvider({ children }) {
     );
 
     if (foundUser) {
-      setUser(foundUser);
-      return true;
-    }
+  setUser(foundUser);
+  localStorage.setItem("user", JSON.stringify(foundUser));
+  return true;
+}
 
     return false;
   };
 
   const logout = () => {
-    setUser(null);
-  };
+  setUser(null);
+  localStorage.removeItem("user");
+};
 
   return (
     <AuthContext.Provider value={{ user, login, logout, users }}>

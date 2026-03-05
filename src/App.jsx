@@ -10,8 +10,8 @@ import Dashboard from './routes/Dashboard';
 function App() {
   return (
       <Routes>
-        <Route element={<PublicRoute />}>
-          <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<PublicRoute />}>
+        <Route index element={<Login />} />
         </Route>
         
         <Route element={<ProtectedRoutes />}>

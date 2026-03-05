@@ -5,6 +5,8 @@ import { AuthContext } from "../AuthContext";
 function PublicRoute() {
   const { user } = useContext(AuthContext);
 
+  console.log("USER EN PUBLIC ROUTE:", user);
+
   if (user) {
     return <Navigate to="/dashboard" replace />;
   }
@@ -13,4 +15,3 @@ function PublicRoute() {
 }
 
 export default PublicRoute;
-//Permite que el usuario acceda al login si ya estaba autenticado
