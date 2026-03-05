@@ -7,21 +7,18 @@ function Login ({ onLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = (username, password) => {
-    const foundUser = users.find(
-        (u) => u.user === username && u.password === password
-    );
-
-    if (foundUser) {
-        setCurrentUser(foundUser);
-        return true;
+    const handleLogin = () => {
+    const success = onLogin(username, password);
+    
+    if (success) {
+        navigate('/dashboard');
+    } else {
+        alert('Credenciales incorrectas');
     }
+};
 
-    return false;
-    };
-
-    return foundUser ? true : false;
-    };
+  
+    
 
     return (
         <div>
@@ -44,7 +41,8 @@ function Login ({ onLogin }) {
             action={handleLogin}
             />
         </div>
-    )
-}
+    );
+};
+
 
 export default Login;
